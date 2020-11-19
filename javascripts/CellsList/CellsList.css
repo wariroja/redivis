@@ -1,0 +1,41 @@
+.cellListWrapper {
+	background: var(--color-baseWhite);
+	width: 100%;
+	padding: 0;
+	border: 1px solid var(--color-grey4);
+}
+
+.cell {
+	background: var(--color-baseWhite);
+	width: 120px;
+	padding: 6px 10px;
+	border-bottom: 1px solid var(--color-grey5);
+
+	&.selected {
+		background: var(--color-customBackground);
+	}
+
+	&.headerCell {
+		@mixin font-small;
+		@mixin font-bold;
+
+		position: absolute;
+		top: 0;
+		cursor: pointer;
+		color: var(--color-grey2);
+		background: var(--color-grey6);
+		text-transform: uppercase;
+
+		&:hover {
+			background: var(--color-grey5);
+		}
+	}
+
+	&:not(.headerCell) {
+		@mixin font-mono-small;
+	}
+}
+
+.nullValue {
+	color: var(--color-grey3);
+}
