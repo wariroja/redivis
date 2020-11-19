@@ -1,0 +1,40 @@
+/* stylelint-disable */
+:root {
+	--color-base: #4d4c54;
+	--color-baseDark: #353538;
+	--color-baseWhite: #ffffff;
+
+	--color-grey1: #5e5c66;
+	--color-grey2: #817f8a;
+	--color-grey3: #b1b0b8;
+	--color-grey4: #d4d3db;
+	--color-grey5: #e9e8ed;
+	--color-grey6: #f5f5f7;
+	--color-grey7: #fafafb;
+
+	--color-primary: #7f3b97;
+	--color-primaryDark: #5e1e75;
+	--color-primaryLight: #a88bc9;
+	--color-primaryBackground: #eddff2;
+	--color-primaryOverlay: #ffffff;
+
+	--color-custom: var(--color-primary);
+	--color-customDark: var(--color-primaryDark);
+	--color-customLight: var(--color-primaryLight);
+	--color-customBackground: var(--color-primaryBackground);
+	--color-customOverlay: var(--color-primaryOverlay);
+
+	--color-error: #efa5a5;
+	--color-errorHover: #ad7575;
+
+	--color-alertError: #efa5a5;
+	--color-alertErrorBackground: #ffe0e0;
+	--color-alertWarning: #ffe263;
+	--color-alertWarningBackground: #fff9d9;
+	--color-alertSuccess: #88bd71;
+	--color-alertSuccessBackground: #dfefd8;
+	--color-alertDisabled: var(--color-grey4);
+	--color-alertErrorBackgroundHover: #e6d2d2;
+	--color-alertWarningBackgroundHover: #efe9cb;
+	--color-alertSuccessBackgroundHover: #d4e2cd;
+}

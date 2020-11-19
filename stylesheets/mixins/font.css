@@ -1,0 +1,69 @@
+/* stylelint-disable */
+@define-mixin font-medium {
+	font-size: 14px;
+	line-height: 19px;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 600;
+}
+
+@define-mixin font-small {
+	font-size: 12px;
+	line-height: 16px;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 600;
+}
+
+@define-mixin font-tiny {
+	font-size: 10px;
+	line-height: 13px;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 600;
+}
+
+@define-mixin font-medium-bold {
+	font-size: 14px;
+	line-height: 19px;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 700;
+}
+
+@define-mixin font-bold {
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 700;
+}
+
+@define-mixin font-semiBold {
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 700;
+}
+
+@define-mixin font-small-bold {
+	font-size: 12px;
+	line-height: 16px;
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 700;
+}
+
+@define-mixin font-inherit {
+	font-size: inherit;
+	line-height: inherit;
+}
+
+@define-mixin font-mono {
+	font-family: 'Roboto Mono', monospace !important;
+	font-weight: 400;
+}
+
+@define-mixin font-mono-small {
+	font-size: 12px;
+	line-height: 16px;
+	font-family: 'Roboto Mono', monospace !important;
+	font-weight: 400;
+}
+
+@define-mixin font-mono-medium {
+	font-size: 14px;
+	line-height: 19px;
+	font-family: 'Roboto Mono', monospace !important;
+	font-weight: 400;
+}
