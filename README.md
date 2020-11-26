@@ -15,6 +15,8 @@ Next, put on your developer hat, and update the table viewer to show data from t
 
 Please create a new branch from the PR branch above, and submit a pull request to update the `rowGetter` function (in `javascripts/CellsList/TableCache.js`) to fetch data via the Redivis API, as described in issue #3 in this repo.
 
+Note that we recommend spending no more than ~2 hours on this whole project - so we encourage you to submit pseudocode to describe your approach if you can't get everything working!
+
 ## Installation & running
 To run the table viewer application on your computer, use the following steps:
 1. Clone the repository to a directory on your local machine
