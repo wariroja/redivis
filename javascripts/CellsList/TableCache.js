@@ -1,3 +1,4 @@
+import ndjsonStream from 'can-ndjson-stream';
 const ROW_HEIGHT = 30;
 const MIN_CELL_WIDTH = 50;
 const MAX_CELL_WIDTH = 500;
@@ -174,13 +175,37 @@ async function rowGetter({ tableIdentifier, variables, rowStart, rowEnd, columnS
 		TODO: This method should call the Redivis API to fetch and process real data. Right now it's just
 		 	  displaying dummy data. See issue #3 for more info.
 	 */
-	const rows = [];
-	for (let i = rowStart; i < rowEnd; i++) {
-		const columns = [];
-		for (let j = columnStart; j < columnEnd; j++) {
-			columns.push(`row${i}_col${j}`); // populate w fake values for each cell
-		}
-		rows.push(columns);
+
+	//Generates a string of comma separated variables to be used as selectedVariables's query value
+	const variablesArr = [];
+	let currentVariable;
+	for (let i = 0; i < variables.length; i++) {
+		currentVariable = variables[i].name;
+		variablesArr.push(currentVariable);
 	}
-	return rows;
+	const variablesStr = variablesArr.join(',');
+
+	//Fetches rows data using tableIdentifier and variableStr variables
+	const rowsResponse = await fetch(
+		`https://redivis.com/api/v1/tables/${tableIdentifier}/rows?selectedVariables=${variablesStr}`,
+		{
+			headers: {
+				Authorization: `Bearer ${process.env.API_ACCESS_TOKEN}`,
+			},
+		},
+	);
+	
+	//Parses incoming NDJSON data using npm package: can-ndjson-stream
+	const rowsReader = ndjsonStream(rowsResponse.body).getReader();
+	let result;
+	const rowsData = [];
+	while (true) {
+		result = await rowsReader.read();
+		if (!result || !result.done) {
+			rowsData.push(result.value); //result.value is one line of the NDJSON data
+		} else {
+			break;
+		}
+	}
+	return rowsData;
 }
