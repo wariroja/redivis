@@ -179,22 +179,24 @@ async function rowGetter({ tableIdentifier, variables, rowStart, rowEnd, columnS
 	//Generates a string of comma separated variables to be used as selectedVariables's query value
 	const variablesArr = [];
 	let currentVariable;
-	for (let i = 0; i < variables.length; i++) {
+	// Generates current columns range
+	for (let i = columnStart; i < columnEnd; i++) {
 		currentVariable = variables[i].name;
 		variablesArr.push(currentVariable);
 	}
 	const variablesStr = variablesArr.join(',');
+	const maxResults = rowEnd - rowStart;
 
-	//Fetches rows data using tableIdentifier and variableStr variables
+	//Fetches current rows range and columns range
 	const rowsResponse = await fetch(
-		`https://redivis.com/api/v1/tables/${tableIdentifier}/rows?selectedVariables=${variablesStr}`,
+		`https://redivis.com/api/v1/tables/${tableIdentifier}/rows?selectedVariables=${variablesStr}&startIndex=${rowStart}&maxResults=${maxResults}`,
 		{
 			headers: {
 				Authorization: `Bearer ${process.env.API_ACCESS_TOKEN}`,
 			},
 		},
 	);
-	
+
 	//Parses incoming NDJSON data using npm package: can-ndjson-stream
 	const rowsReader = ndjsonStream(rowsResponse.body).getReader();
 	let result;
